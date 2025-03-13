@@ -1,0 +1,173 @@
+
+#' @title Model Formula of \link[lcmm]{lcmm} Object
+#' 
+#' @param x \link[lcmm]{lcmm} object
+#' 
+#' @param ... additional parameters, currently of no use
+#' 
+#' @examples
+#' formula(m20)
+#' @importFrom stats formula
+#' @export formula.lcmm
+#' @export
+formula.lcmm <- function(x, ...) {
+  fom <- x$call$fixed
+  if (inherits(fom, what = 'formula')) return(fom)
+  if (is.call(fom) && fom[[1L]] == '~') return(eval(fom))
+  stop('x$call$fixed must be formula')
+}
+
+
+#' @title Number of Subjects in \link[lcmm]{lcmm} Object
+#' 
+#' @param object an \link[lcmm]{lcmm} object
+#' 
+#' @param ... additional parameters
+#' 
+#' @details
+#' This is clearly documented in \link[lcmm]{lcmm}.
+#' 
+#' Method dispatch to S3 generic \link[stats]{nobs} is required in S3 generic \link[stats]{BIC}.
+#' The end user should use function [nobsText.lcmm()].
+#' 
+#' @returns 
+#' Function [nobs.lcmm()] returns an \link[base]{integer} scalar.
+#' 
+#' @examples
+#' nobs(m20)
+#' @importFrom stats nobs
+#' @export nobs.lcmm
+#' @export
+nobs.lcmm <- function(object, ...) object[['ns']]
+
+
+
+#' @title Log-Likelihood, AIC and BIC of \link[lcmm]{lcmm} Object
+#' 
+#' @description ..
+#' 
+#' @param object \link[lcmm]{lcmm} object
+#' 
+#' @param ... additional parameters
+#' 
+#' @details
+#' \link[lcmm]{lcmm} object contains elements `$loglik`, `$AIC` and `$BIC`.
+#' 
+#' @returns
+#' Function [logLik.lcmm()] returns a \link[stats]{logLik} object.
+#' 
+#' Functions [AIC.lcmm()] and [BIC.lcmm()] return \link[base]{numeric} scalars.
+#' 
+#' @examples
+#' logLik(m20)
+#' AIC(m20)
+#' BIC(m20)
+#' @name logLik_lcmm
+#' @importFrom stats logLik
+#' @export logLik.lcmm
+#' @export
+logLik.lcmm <- function(object, ...) {
+  # `posfix` is not returned from ?lcmm:::.Contlcmm nor ?lcmm:::.Ordlcmm
+  posfix <- eval(object$call$posfix) # may run into error
+  ret <- object$loglik
+  if (!all.equal.numeric(ret, object$loglik)) stop('anything wrong?')
+  attr(ret, which = 'nobs') <- nobs.lcmm(object)
+  attr(ret, which = 'df') <- length(object$best) - length(posfix)
+  class(ret) <- 'logLik'
+  return(ret)
+}
+
+#' @rdname logLik_lcmm
+#' @importFrom stats AIC
+#' @export AIC.lcmm
+#' @export
+AIC.lcmm <- function(object, ...) {
+  ret <- object |> logLik.lcmm(...) |> AIC() # ?stats:::AIC.logLik
+  if (!all.equal.numeric(ret, object$AIC)) stop('anything wrong?')
+  return(ret)
+}
+
+#' @rdname logLik_lcmm
+#' @importFrom stats BIC
+#' @export BIC.lcmm
+#' @export
+BIC.lcmm <- function(object, ...) {
+  ret <- object |> logLik.lcmm(...) |> BIC() # ?stats:::BIC.logLik
+  if (!all.equal.numeric(ret, object$BIC)) stop('anything wrong?')
+  return(ret)
+}
+
+
+
+
+
+
+#' @title Additional S3 Method Dispatches for \link[lcmm]{lcmm} Object
+#' 
+#' @param x \link[lcmm]{lcmm} object
+#' 
+#' @note
+#' See `lcmm:::summary.lcmm` for details.
+#' 
+#' @returns 
+#' Function [nobsText.lcmm()] returns a \link[base]{character} scalar.
+#' 
+#' @examples
+#' nobsText.lcmm(m20)
+#' @keywords internal
+#' @name S3_lcmm
+#' @export
+nobsText.lcmm <- function(x) {
+  sprintf(fmt = '%d observations from %d `%s`', 
+          x$N[5], 
+          x[['ns']], 
+          x$call$subject)
+}
+
+#' @rdname S3_lcmm
+#' @export
+desc_.lcmm <- function(x) 'latent class mixed-effect'
+
+
+
+#Sprintf.lcmm <- function(x) {
+#  str2 <- if (length(ng_orig <- attr(x, which = 'ng_orig', exact = TRUE))) {
+#    sprintf(
+#      fmt = 'Up to %d latent classes are considered and the best number of latent classes are determined by Bayesian information criterion (BIC).',
+#      ng_orig)
+#  } # else NULL
+#}
+
+
+
+
+
+# I am not presenting ecip() for lcmm::lcmm
+# functions below are correct, but not used right now
+
+# lcmm:::coef.lcmm -> lcmm:::estimates.lcmm
+#' @importFrom utils capture.output
+coef_.lcmm <- function(x) {
+  capture.output(
+    xsum <- x |>
+      summary() # ?lcmm:::summary.lcmm returns 'matrix' (eh..)
+  )
+  # xsum is 'matrix'
+  ret <- xsum[, 'coef']
+  names(ret) <- rownames(xsum)
+  return(ret)
+}
+
+#' @importFrom utils capture.output
+#' @export
+.pval.lcmm <- function(x) {
+  capture.output(
+    xsum <- x |>
+      summary() # ?lcmm:::summary.lcmm returns 'matrix' (eh..)
+  )
+  # xsum is 'matrix'
+  ret <- xsum[, 'p-value']
+  names(ret) <- rownames(xsum)
+  return(ret)
+}
+

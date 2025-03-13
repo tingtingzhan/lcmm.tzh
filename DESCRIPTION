@@ -1,0 +1,20 @@
+Package: lcmm.tzh
+Type: Package
+Title: Extending lcmm Package
+Version: 0.1.0
+Date: 2024-01-18
+Author: Tingting Zhan [aut, cre, cph]
+Maintainer: Tingting Zhan <tingtingzhan@gmail.com>
+Description: To extend lcmm package.
+License: GPL-2
+Encoding: UTF-8
+Authors@R: c(person(given = "Tingting", family = "Zhan", role
+       = c("aut", "cre"), email =
+       c("tingtingzhan@gmail.com")))
+Language: en-US
+LazyData: true
+LazyDataCompression: xz
+Roxygen: list(markdown = TRUE)
+Depends: R (>= 4.4.0), ggplot2, lcmm
+Imports: nlme
+RoxygenNote: 7.3.2
