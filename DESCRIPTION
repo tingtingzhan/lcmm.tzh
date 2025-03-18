@@ -16,5 +16,5 @@ LazyData: true
 LazyDataCompression: xz
 Roxygen: list(markdown = TRUE)
 Depends: R (>= 4.4.0), ggplot2 (== 3.5.1), lcmm (== 2.2.1)
-Imports: nlme (== 3.1.167)
+Imports: nlme (== 3.1.167), ggrepel, rlang
 RoxygenNote: 7.3.2

@@ -34,8 +34,10 @@ autoplot.lcmm <- function(object, ...) {
 
 
 
-#' @importFrom ggplot2 autolayer aes geom_line labs facet_grid label_both
 #' @rdname autoplot_lcmm
+#' @importFrom ggplot2 autolayer aes geom_line labs facet_grid label_both
+#' @importFrom ggrepel geom_label_repel 
+#' @importFrom rlang .data
 #' @export autolayer.lcmm
 #' @export
 autolayer.lcmm <- function(object, type = c('original', 'transformed'), ...) {
@@ -50,7 +52,9 @@ autolayer.lcmm <- function(object, type = c('original', 'transformed'), ...) {
   subj <- object$call$subject
   
   dat <- getData.lcmm(object)
-  xval1 <- unlist(lapply(split.default(dat[[xs]], f = dat[[subj]]), FUN = sort), use.names = FALSE)
+  xval1 <- split.default(dat[[xs]], f = dat[[subj]]) |> 
+    lapply(FUN = sort) |>
+    unlist(use.names = FALSE)
   
   # subject id in `object$pred` is sorted!!!
   pred_prob <- merge.data.frame(x = object$pred, y = object$pprob, by = subj)
@@ -74,11 +78,21 @@ autolayer.lcmm <- function(object, type = c('original', 'transformed'), ...) {
   
   cls <- factor(pred_prob$class)
   
+  pred_ <- data.frame(x = xval1, y = mpred, group = cls) |>
+    unique.data.frame()
+  
   list(
     
     geom_line(mapping = aes(x = xval1, y = obs, group = pred_prob[[subj]], colour = cls), size = .1, alpha = .5),
     
-    geom_line(mapping = aes(x = xval1, y = mpred, group = cls, colour = cls)),
+    geom_line(data = pred_, mapping = aes(x = .data$x, y = .data$y, group = .data$group, colour = .data$group)),
+    
+    (if (is.factor(xval1)) {
+      geom_label_repel(data = pred_, mapping = aes(
+        x = .data$x, y = .data$y, group = .data$group, colour = .data$group, 
+        label = sprintf(fmt = '%.3f', .data$y)
+      ), size = 2.5)
+    }),
     
     #(if (length(facet_nm <- xs[-1L])) {
     #  facet_grid(rows = call('~', str2lang(paste(facet_nm, collapse = '+')), quote(.)), labeller = label_both)
