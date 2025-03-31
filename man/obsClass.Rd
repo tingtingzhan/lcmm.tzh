@@ -13,13 +13,13 @@ obsClass(object)
 \item{object}{an \link[lcmm]{lcmm} object}
 }
 \value{
-Function \link{obsClass.lcmm} returns a \link[base]{factor}.
+Function \code{\link[=obsClass.lcmm]{obsClass.lcmm()}} returns a \link[base]{factor}.
 }
 \description{
 To obtain the identifier of latent classes from an latent class mixed-effect model.
 }
 \note{
-See \strong{Value} section of \link[lcmm]{lcmm}.
+See \strong{Value} section of function \link[lcmm]{lcmm}.
 
 Name clash \code{methods::getClass}.
 

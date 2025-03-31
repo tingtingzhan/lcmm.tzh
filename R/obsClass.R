@@ -9,10 +9,10 @@
 #' @param object an \link[lcmm]{lcmm} object
 #' 
 #' @note
-#' See **Value** section of \link[lcmm]{lcmm}.
+#' See **Value** section of function \link[lcmm]{lcmm}.
 #' 
 #' @returns 
-#' Function [obsClass.lcmm] returns a \link[base]{factor}.
+#' Function [obsClass.lcmm()] returns a \link[base]{factor}.
 #' 
 #' @note
 #' Name clash `methods::getClass`.

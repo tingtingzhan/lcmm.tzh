@@ -3,8 +3,6 @@ Type: Package
 Title: Extending lcmm Package
 Version: 0.1.0
 Date: 2024-01-18
-Author: Tingting Zhan [aut, cre, cph]
-Maintainer: Tingting Zhan <tingtingzhan@gmail.com>
 Description: To extend lcmm package.
 License: GPL-2
 Encoding: UTF-8
@@ -16,5 +14,5 @@ LazyData: true
 LazyDataCompression: xz
 Roxygen: list(markdown = TRUE)
 Depends: R (>= 4.4.0), ggplot2 (== 3.5.1), lcmm (== 2.2.1)
-Imports: nlme (== 3.1.167), ggrepel, rlang
+Imports: nlme (== 3.1.168), ggrepel, rlang
 RoxygenNote: 7.3.2

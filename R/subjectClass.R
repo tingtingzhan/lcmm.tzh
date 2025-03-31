@@ -19,12 +19,12 @@ subjectClass <- function(...) {
     'hlme', 'lcmm', 'multlcmm', 'Jointlcmm', 'mpjlcmm', 'externX', 'externSurv'
   ), FUN.VALUE = NA))) stop('input must be one of supported models')
   
-  xs <- lapply(dots, FUN = function(i) i$pprob[, 1:2, drop = FALSE])
+  xs <- lapply(dots, FUN = \(i) i$pprob[, 1:2, drop = FALSE])
   if (!all(duplicated.default(lapply(xs, FUN = names))[-1L])) stop('`subject` not the same')
   
   subject <- names(xs[[1L]])[1L]
   
-  xs1 <- mapply(FUN = function(x, nm) {
+  xs1 <- mapply(FUN = \(x, nm) {
     names(x)[2L] <- paste(names(x)[2L], nm, sep = '.') 
     return(x)
   }, x = xs, nm = names(dots), SIMPLIFY = FALSE)

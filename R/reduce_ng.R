@@ -45,7 +45,7 @@ reduce_ng_lcmm <- function(object, criterion = BIC, ...) {
     list(m1, object)
   } else c(
     list(m1), 
-    lapply(2:(object$ng - 1L), FUN = function(g) {
+    lapply(2:(object$ng - 1L), FUN = \(g) {
       cl$ng <- g
       cat(c('lcmm with', g, 'latent class(es) running .. '))
       on.exit(return(eval(cl)))
