@@ -33,7 +33,7 @@ lcmm_find_ng <- function(fixed, criterion = BIC, ...) {
   cat('Running ng = 1 ... ')
   lc <- lc1 <- eval(cl1)
   objF <- criterion(lc1)
-  cat(sprintf('done! %s = %.2f\n', as.character(substitute(criterion)), objF))
+  sprintf('done! %s = %.2f\n', as.character(substitute(criterion)), objF) |> cat()
   
   if (!length(cl$mixture)) cl$mixture <- eval(call('~', fixed[[3L]]))
   cl$B <- quote(lc1)
@@ -41,10 +41,10 @@ lcmm_find_ng <- function(fixed, criterion = BIC, ...) {
   repeat {
     ng <- ng + 1L
     cl$ng <- ng
-    cat(sprintf('Running ng = %d ... ', ng))
+    sprintf('Running ng = %d ... ', ng) |> cat()
     lc_run <- eval(cl)
     objF_run <- criterion(lc_run)
-    cat(sprintf('done! %s = %.2f\n', as.character(substitute(criterion)), objF_run))
+    sprintf('done! %s = %.2f\n', as.character(substitute(criterion)), objF_run) |> cat()
     if (objF_run > objF) break
     lc <- lc_run
     objF <- objF_run

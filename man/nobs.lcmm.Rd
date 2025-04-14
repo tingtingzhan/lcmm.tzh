@@ -24,5 +24,5 @@ Method dispatch to S3 generic \link[stats]{nobs} is required in S3 generic \link
 The end user should use function \code{\link[=nobsText.lcmm]{nobsText.lcmm()}}.
 }
 \examples{
-nobs(m20)
+m20 |> nobs()
 }

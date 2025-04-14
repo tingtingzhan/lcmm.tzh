@@ -6,7 +6,7 @@
 #' @param ... additional parameters, currently of no use
 #' 
 #' @examples
-#' formula(m20)
+#' m20 |> formula()
 #' @importFrom stats formula
 #' @export formula.lcmm
 #' @export
@@ -34,7 +34,7 @@ formula.lcmm <- function(x, ...) {
 #' Function [nobs.lcmm()] returns an \link[base]{integer} scalar.
 #' 
 #' @examples
-#' nobs(m20)
+#' m20 |> nobs()
 #' @importFrom stats nobs
 #' @export nobs.lcmm
 #' @export
@@ -56,13 +56,11 @@ nobs.lcmm <- function(object, ...) object[['ns']]
 #' @returns
 #' Function [logLik.lcmm()] returns a \link[stats]{logLik} object.
 #' 
-#' Functions [AIC.lcmm()] and [BIC.lcmm()] return \link[base]{numeric} scalars.
-#' 
 #' @examples
-#' logLik(m20)
-#' AIC(m20)
-#' BIC(m20)
-#' @name logLik_lcmm
+#' m20 |> logLik()
+#' m20 |> AIC() |> all.equal.numeric(current = m20$AIC) |> stopifnot()
+#' m20 |> BIC() |> all.equal.numeric(current = m20$BIC) |> stopifnot()
+#' @keywords internal
 #' @importFrom stats logLik
 #' @export logLik.lcmm
 #' @export
@@ -70,34 +68,11 @@ logLik.lcmm <- function(object, ...) {
   # `posfix` is not returned from ?lcmm:::.Contlcmm nor ?lcmm:::.Ordlcmm
   posfix <- eval(object$call$posfix) # may run into error
   ret <- object$loglik
-  if (!all.equal.numeric(ret, object$loglik)) stop('anything wrong?')
   attr(ret, which = 'nobs') <- nobs.lcmm(object)
   attr(ret, which = 'df') <- length(object$best) - length(posfix)
   class(ret) <- 'logLik'
   return(ret)
 }
-
-#' @rdname logLik_lcmm
-#' @importFrom stats AIC
-#' @export AIC.lcmm
-#' @export
-AIC.lcmm <- function(object, ...) {
-  ret <- object |> logLik.lcmm(...) |> AIC() # ?stats:::AIC.logLik
-  if (!all.equal.numeric(ret, object$AIC)) stop('anything wrong?')
-  return(ret)
-}
-
-#' @rdname logLik_lcmm
-#' @importFrom stats BIC
-#' @export BIC.lcmm
-#' @export
-BIC.lcmm <- function(object, ...) {
-  ret <- object |> logLik.lcmm(...) |> BIC() # ?stats:::BIC.logLik
-  if (!all.equal.numeric(ret, object$BIC)) stop('anything wrong?')
-  return(ret)
-}
-
-
 
 
 
@@ -130,27 +105,17 @@ desc_.lcmm <- function(x) 'latent class mixed-effect'
 
 
 
-#Sprintf.lcmm <- function(x) {
-#  str2 <- if (length(ng_orig <- attr(x, which = 'ng_orig', exact = TRUE))) {
-#    sprintf(
-#      fmt = 'Up to %d latent classes are considered and the best number of latent classes are determined by Bayesian information criterion (BIC).',
-#      ng_orig)
-#  } # else NULL
-#}
-
-
-
-
 
 # I am not presenting ecip() for lcmm::lcmm
 # functions below are correct, but not used right now
 
 # lcmm:::coef.lcmm -> lcmm:::estimates.lcmm
+# ?lcmm:::summary.lcmm returns 'matrix' (eh..)
 #' @importFrom utils capture.output
 coef_.lcmm <- function(x) {
   capture.output(
     xsum <- x |>
-      summary() # ?lcmm:::summary.lcmm returns 'matrix' (eh..)
+      summary() 
   )
   # xsum is 'matrix'
   ret <- xsum[, 'coef']
@@ -163,7 +128,7 @@ coef_.lcmm <- function(x) {
 .pval.lcmm <- function(x) {
   capture.output(
     xsum <- x |>
-      summary() # ?lcmm:::summary.lcmm returns 'matrix' (eh..)
+      summary()
   )
   # xsum is 'matrix'
   ret <- xsum[, 'p-value']

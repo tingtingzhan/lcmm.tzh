@@ -15,5 +15,5 @@
 Model Formula of \link[lcmm]{lcmm} Object
 }
 \examples{
-formula(m20)
+m20 |> formula()
 }
