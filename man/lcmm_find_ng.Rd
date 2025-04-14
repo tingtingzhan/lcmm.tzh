@@ -21,5 +21,5 @@ data(data_lcmm, package = 'lcmm')
 m = lcmm_find_ng(Ydep2~Time, subject='ID',
  idiag=TRUE, data=data_lcmm, link='beta',
  verbose=FALSE, returndata=TRUE)
-
 }
+\keyword{internal}

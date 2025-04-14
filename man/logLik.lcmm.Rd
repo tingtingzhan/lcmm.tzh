@@ -2,7 +2,7 @@
 % Please edit documentation in R/S3_lcmm.R
 \name{logLik.lcmm}
 \alias{logLik.lcmm}
-\title{Log-Likelihood, AIC and BIC of \link[lcmm]{lcmm} Object}
+\title{Log-Likelihood of \link[lcmm]{lcmm} Object}
 \usage{
 \method{logLik}{lcmm}(object, ...)
 }
@@ -17,7 +17,7 @@ Function \code{\link[=logLik.lcmm]{logLik.lcmm()}} returns a \link[stats]{logLik
 \description{
 ..
 }
-\details{
+\note{
 \link[lcmm]{lcmm} object contains elements \verb{$loglik}, \verb{$AIC} and \verb{$BIC}.
 }
 \examples{

@@ -42,7 +42,7 @@ nobs.lcmm <- function(object, ...) object[['ns']]
 
 
 
-#' @title Log-Likelihood, AIC and BIC of \link[lcmm]{lcmm} Object
+#' @title Log-Likelihood of \link[lcmm]{lcmm} Object
 #' 
 #' @description ..
 #' 
@@ -50,7 +50,7 @@ nobs.lcmm <- function(object, ...) object[['ns']]
 #' 
 #' @param ... additional parameters
 #' 
-#' @details
+#' @note
 #' \link[lcmm]{lcmm} object contains elements `$loglik`, `$AIC` and `$BIC`.
 #' 
 #' @returns
