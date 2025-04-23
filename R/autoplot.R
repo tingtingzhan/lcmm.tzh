@@ -35,6 +35,7 @@ autoplot.lcmm <- function(object, ...) {
 
 
 #' @rdname autoplot_lcmm
+#' @importFrom geomtextpath geom_textline
 #' @importFrom ggplot2 autolayer aes geom_line labs facet_grid label_both
 #' @importFrom ggrepel geom_label_repel 
 #' @importFrom rlang .data
@@ -78,18 +79,30 @@ autolayer.lcmm <- function(object, type = c('original', 'transformed'), ...) {
   
   cls <- factor(pred_prob$class)
   
-  pred_ <- data.frame(x = xval1, y = mpred, group = cls) |>
+  pred_ <- data.frame(
+    x = xval1, 
+    y = mpred, 
+    id = cls,
+    label = cls |> as.character() |> sprintf(fmt = 'Latent Class: %s')
+  ) |>
     unique.data.frame()
   
   list(
     
-    geom_line(mapping = aes(x = xval1, y = obs, group = pred_prob[[subj]], colour = cls), size = .1, alpha = .5),
+    geom_line(
+      mapping = aes(x = xval1, y = obs, group = pred_prob[[subj]], colour = cls), 
+      size = .1, alpha = .5, show.legend = FALSE
+    ),
     
-    geom_line(data = pred_, mapping = aes(x = .data$x, y = .data$y, group = .data$group, colour = .data$group)),
+    geom_textline(
+      data = pred_, 
+      mapping = aes(x = .data$x, y = .data$y, label = .data$label, group = .data$id, colour = .data$id),
+      show.legend = FALSE
+    ),
     
     (if (is.factor(xval1)) {
       geom_label_repel(data = pred_, mapping = aes(
-        x = .data$x, y = .data$y, group = .data$group, colour = .data$group, 
+        x = .data$x, y = .data$y, group = .data$id, colour = .data$id, 
         label = sprintf(fmt = '%.3f', .data$y)
       ), size = 2.5)
     }),
