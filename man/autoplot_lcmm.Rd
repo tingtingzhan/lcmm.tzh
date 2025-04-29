@@ -22,6 +22,7 @@
 ..
 }
 \examples{
+library(ggplot2)
 autoplot(m20)
 autoplot(m20, type = 'trans')
 autoplot(m21)
