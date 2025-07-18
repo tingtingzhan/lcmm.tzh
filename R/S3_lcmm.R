@@ -104,10 +104,10 @@ nobsText.lcmm <- function(x) {
 #' @export
 desc_.lcmm <- function(x) {
   
-  ret <- 'latent class mixed-effect'
+  ret <- 'latent class mixed-effect [@Proust06]'
   
   attr(ret, which = 'bibentry') <- bibentry(
-    bibtype = 'article',
+    bibtype = 'article', key = 'Proust06',
     author = 'Proust, C\u00e9cile and Jacqmin-Gadda, H\u00e9l\u00e8ne and Taylor, Jeremy M. G. and Ganiayre, Julien and Commenges, Daniel',
     title = 'A Nonlinear Model with Latent Process for Cognitive Evolution Using Multivariate Longitudinal Data',
     journal = 'Biometrics',
