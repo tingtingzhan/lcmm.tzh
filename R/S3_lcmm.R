@@ -91,6 +91,8 @@ logLik.lcmm <- function(object, ...) {
 #' nobsText.lcmm(m20)
 #' @keywords internal
 #' @name S3_lcmm
+#' @importFrom ecip nobsText
+#' @export nobsText.lcmm
 #' @export
 nobsText.lcmm <- function(x) {
   sprintf(fmt = '%d observations from %d `%s`', 
@@ -103,6 +105,8 @@ nobsText.lcmm <- function(x) {
 #' @importFrom methods new
 #' @importFrom utils bibentry
 #' @importClassesFrom rmd.tzh md_lines
+#' @importFrom ecip desc_
+#' @export desc_.lcmm
 #' @export
 desc_.lcmm <- function(x) {
   
@@ -129,7 +133,11 @@ desc_.lcmm <- function(x) {
 
 # lcmm:::coef.lcmm -> lcmm:::estimates.lcmm
 # ?lcmm:::summary.lcmm returns 'matrix' (eh..)
+#' @rdname S3_lcmm
 #' @importFrom utils capture.output
+#' @importFrom ecip coef_
+#' @export coef_.lcmm
+#' @export
 coef_.lcmm <- function(x) {
   capture.output(
     xsum <- x |>
@@ -141,7 +149,11 @@ coef_.lcmm <- function(x) {
   return(ret)
 }
 
+
+#' @rdname S3_lcmm
 #' @importFrom utils capture.output
+#' @importFrom ecip .pval
+#' @export .pval.lcmm
 #' @export
 .pval.lcmm <- function(x) {
   capture.output(
@@ -153,4 +165,21 @@ coef_.lcmm <- function(x) {
   names(ret) <- rownames(xsum)
   return(ret)
 }
+
+
+
+#' @title R Markdown Lines for \link[lcmm]{lcmm} Object  
+#' 
+#' @param x,xnm,... ..
+#' 
+#' @examples
+#' library(rmd.tzh); library(ecip) 
+#' list(
+#'  '`lcmm`' = m20
+#' ) |> render_(file = 'lcmm')
+#' @importFrom rmd.tzh md_
+#' @importFrom ecip md_autoplot_
+#' @export md_.lcmm
+#' @export
+md_.lcmm <- md_autoplot_
 

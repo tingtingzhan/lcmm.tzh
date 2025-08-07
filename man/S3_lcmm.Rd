@@ -4,11 +4,17 @@
 \alias{S3_lcmm}
 \alias{nobsText.lcmm}
 \alias{desc_.lcmm}
+\alias{coef_.lcmm}
+\alias{.pval.lcmm}
 \title{Additional S3 Method Dispatches for \link[lcmm]{lcmm} Object}
 \usage{
-nobsText.lcmm(x)
+\method{nobsText}{lcmm}(x)
 
-desc_.lcmm(x)
+\method{desc_}{lcmm}(x)
+
+\method{coef_}{lcmm}(x)
+
+\method{.pval}{lcmm}(x)
 }
 \arguments{
 \item{x}{\link[lcmm]{lcmm} object}
