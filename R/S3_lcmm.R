@@ -128,7 +128,7 @@ desc_.lcmm <- function(x) {
 
 
 
-# I am not presenting ecip() for lcmm::lcmm
+# I am not presenting [ecip()] for \link[lcmm]{lcmm} object
 # functions below are correct, but not used right now
 
 # lcmm:::coef.lcmm -> lcmm:::estimates.lcmm
@@ -173,10 +173,9 @@ coef_.lcmm <- function(x) {
 #' @param x,xnm,... ..
 #' 
 #' @examples
-#' library(rmd.tzh); library(ecip) 
 #' list(
 #'  '`lcmm`' = m20
-#' ) |> render_(file = 'lcmm')
+#' ) |> rmd.tzh::render_(file = 'lcmm')
 #' @importFrom rmd.tzh md_
 #' @importFrom ecip md_autoplot_
 #' @export md_.lcmm

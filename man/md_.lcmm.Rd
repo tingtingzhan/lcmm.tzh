@@ -13,8 +13,7 @@
 R Markdown Lines for \link[lcmm]{lcmm} Object
 }
 \examples{
-library(rmd.tzh); library(ecip) 
 list(
  '`lcmm`' = m20
-) |> render_(file = 'lcmm')
+) |> rmd.tzh::render_(file = 'lcmm')
 }
