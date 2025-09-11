@@ -13,7 +13,7 @@ LazyData: true
 LazyDataCompression: xz
 Roxygen: list(markdown = TRUE)
 Depends: R (>= 4.5), lcmm (== 2.2.1)
-Imports: methods, ggplot2 (== 3.5.2), geomtextpath (== 0.2.0), 
+Imports: methods, ggplot2 (== 4.0.0), geomtextpath (== 0.2.0), 
     nlme (== 3.1.168), ggrepel (== 0.9.6), rlang (== 1.1.6), 
     rmd.tzh, ecip
-RoxygenNote: 7.3.2
+RoxygenNote: 7.3.3
