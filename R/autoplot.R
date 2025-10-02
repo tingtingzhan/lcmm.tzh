@@ -93,7 +93,7 @@ autolayer.lcmm <- function(object, type = c('original', 'transformed'), ...) {
     
     geom_line(
       mapping = aes(x = xval1, y = obs, group = pred_prob[[subj]], colour = cls), 
-      size = .1, alpha = .5, show.legend = FALSE
+      linewidth = .1, alpha = .5, show.legend = FALSE
     ),
     
     geom_textline(
