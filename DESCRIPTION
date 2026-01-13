@@ -14,6 +14,6 @@ LazyDataCompression: xz
 Roxygen: list(markdown = TRUE)
 Depends: R (>= 4.5), lcmm (== 2.2.2)
 Imports: methods, ggplot2 (== 4.0.1), geomtextpath (== 0.2.0), 
-    nlme (== 3.1.168), ggrepel (== 0.9.6), rlang (== 1.1.6), 
+    nlme (== 3.1.168), ggrepel (== 0.9.6), rlang (== 1.1.7), 
     rmd.tzh, ecip
 RoxygenNote: 7.3.3
