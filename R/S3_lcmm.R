@@ -174,7 +174,8 @@ coef_.lcmm <- function(x) {
 #' 
 #' @examples
 #' list(
-#'  '`lcmm`' = m20
+#'  'model 1' = m20,
+#'  'model 2' = m21
 #' ) |> rmd.tzh::render_(file = 'lcmm')
 #' @importFrom rmd.tzh md_
 #' @importFrom ecip md_autoplot_

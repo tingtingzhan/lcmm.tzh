@@ -74,7 +74,7 @@ autolayer.lcmm <- function(object, type = c('original', 'transformed'), ...) {
   switch(type, transformed = {
     # do nothing!
   }, original = {
-    approx_inv <- approxInverseLink_lcmm(object)
+    approx_inv <- approxlinkinv_lcmm(object)
     obs <- approx_inv(obs)
     mpred <- approx_inv(mpred)
   })

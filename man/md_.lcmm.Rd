@@ -14,6 +14,7 @@ R Markdown Lines for \link[lcmm]{lcmm} Object
 }
 \examples{
 list(
- '`lcmm`' = m20
+ 'model 1' = m20,
+ 'model 2' = m21
 ) |> rmd.tzh::render_(file = 'lcmm')
 }

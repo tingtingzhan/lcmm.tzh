@@ -9,7 +9,7 @@
 \format{
 ..
 
-An object of class \code{lcmm} of length 38.
+An object of class \code{lcmm} of length 39.
 }
 \usage{
 m20
