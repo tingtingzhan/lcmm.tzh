@@ -104,7 +104,7 @@ nobsText.lcmm <- function(x) {
 #' @rdname S3_lcmm
 #' @importFrom methods new
 #' @importFrom utils bibentry
-#' @importClassesFrom rmd.tzh md_lines
+#' @importClassesFrom fastmd md_lines
 #' @importFrom ecip desc_
 #' @export desc_.lcmm
 #' @export
@@ -176,8 +176,8 @@ coef_.lcmm <- function(x) {
 #' list(
 #'  'model 1' = m20,
 #'  'model 2' = m21
-#' ) |> rmd.tzh::render_(file = 'lcmm')
-#' @importFrom rmd.tzh md_
+#' ) |> fastmd::render_(file = 'lcmm')
+#' @importFrom fastmd md_
 #' @importFrom ecip md_autoplot_
 #' @export md_.lcmm
 #' @export

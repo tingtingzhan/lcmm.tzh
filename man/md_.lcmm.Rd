@@ -16,5 +16,5 @@ R Markdown Lines for \link[lcmm]{lcmm} Object
 list(
  'model 1' = m20,
  'model 2' = m21
-) |> rmd.tzh::render_(file = 'lcmm')
+) |> fastmd::render_(file = 'lcmm')
 }
