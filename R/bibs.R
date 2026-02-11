@@ -2,13 +2,19 @@
 #' @title bibs of lcmm package
 #' 
 #' @keywords internal
-#' @importFrom utils bibentry
+#' @importFrom utils bibentry person
 #' @name lcmm_bib
 #' @export
 .proust06 <- \() {
   bibentry(
     bibtype = 'article', key = 'Proust06',
-    author = 'Proust, C\u00e9cile and Jacqmin-Gadda, H\u00e9l\u00e8ne and Taylor, Jeremy M. G. and Ganiayre, Julien and Commenges, Daniel',
+    author = c(
+      person(family = 'Proust', given = 'C\u00e9cile'), 
+      person(family = 'Jacqmin-Gadda', given = 'H\u00e9l\u00e8ne'), 
+      person(family = 'Taylor', given = c('Jeremy', 'M.', 'G.')), 
+      person(family = 'Ganiayre', given = 'Julien'), 
+      person(family = 'Commenges', given = 'Daniel')
+    ),
     title = 'A Nonlinear Model with Latent Process for Cognitive Evolution Using Multivariate Longitudinal Data',
     journal = 'Biometrics',
     volume = '62',
