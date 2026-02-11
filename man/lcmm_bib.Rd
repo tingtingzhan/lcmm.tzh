@@ -5,7 +5,10 @@
 \alias{.proust06}
 \title{bibs of lcmm package}
 \usage{
-.proust06()
+.proust06(key = "Proust06", ...)
+}
+\arguments{
+\item{key, ...}{\link[utils]{bibentry}}
 }
 \description{
 bibs of lcmm package

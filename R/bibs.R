@@ -1,13 +1,15 @@
 
 #' @title bibs of lcmm package
 #' 
+#' @param key,... \link[utils]{bibentry}
+#' 
 #' @keywords internal
 #' @importFrom utils bibentry person
 #' @name lcmm_bib
 #' @export
-.proust06 <- \() {
+.proust06 <- \(key = 'Proust06', ...) {
   bibentry(
-    bibtype = 'article', key = 'Proust06',
+    bibtype = 'article', key = key, ...,
     author = c(
       person(family = 'Proust', given = 'C\u00e9cile'), 
       person(family = 'Jacqmin-Gadda', given = 'H\u00e9l\u00e8ne'), 
