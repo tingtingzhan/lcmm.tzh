@@ -164,7 +164,7 @@ coef_.lcmm <- function(x) {
 #' list(
 #'  'model 1' = m20,
 #'  'model 2' = m21
-#' ) |> fastmd::render_(file = 'lcmm')
+#' ) |> fastmd::render2html(file = 'lcmm')
 #' @importFrom fastmd md_
 #' @importFrom ecip md_autoplot_
 #' @export md_.lcmm
