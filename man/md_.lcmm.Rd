@@ -18,3 +18,4 @@ list(
  'model 2' = m21
 ) |> fastmd::render2html(file = 'lcmm')
 }
+\keyword{internal}

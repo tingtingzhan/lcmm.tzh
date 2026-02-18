@@ -165,9 +165,21 @@ coef_.lcmm <- function(x) {
 #'  'model 1' = m20,
 #'  'model 2' = m21
 #' ) |> fastmd::render2html(file = 'lcmm')
-#' @importFrom fastmd md_
-#' @importFrom ecip md_autoplot_
+#' @keywords internal
+#' @importFrom fastmd md_ md_autoplot_
+#' @importFrom ecip .md_reg
 #' @export md_.lcmm
 #' @export
-md_.lcmm <- md_autoplot_
+md_.lcmm <- function(x, xnm, ...) {
+  
+  z1 <- .md_reg(x)
+  
+  z2 <- md_autoplot_(x = x, xnm = xnm, ...)
+  
+  c(z1, z2) # ?fastmd::c.md_lines
+  
+}
+
+
+
 
