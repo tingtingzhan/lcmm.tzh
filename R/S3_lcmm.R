@@ -167,12 +167,12 @@ coef_.lcmm <- function(x) {
 #' ) |> fastmd::render2html()
 #' @keywords internal
 #' @importFrom fastmd md_ md_autoplot_
-#' @importFrom ecip .md_reg
+#' @importFrom ecip md_regression_
 #' @export md_.lcmm
 #' @export
 md_.lcmm <- function(x, xnm, ...) {
   
-  z1 <- .md_reg(x)
+  z1 <- md_regression_(x)
   
   z2 <- md_autoplot_(x = x, xnm = xnm, ...)
   
