@@ -16,6 +16,6 @@ R Markdown Lines for \link[lcmm]{lcmm} Object
 list(
  'model 1' = m20,
  'model 2' = m21
-) |> fastmd::render2html(file = 'lcmm')
+) |> fastmd::render2html()
 }
 \keyword{internal}
