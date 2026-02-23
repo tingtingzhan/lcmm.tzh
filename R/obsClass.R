@@ -32,7 +32,6 @@ obsClass <- function(object) UseMethod(generic = 'obsClass')
 #' @rdname obsClass
 #' @export obsClass.lcmm
 #' @export
-# old name `getclass_lcmm` 
 obsClass.lcmm <- function(object) {
   
   subj <- object$call$subject
@@ -40,7 +39,7 @@ obsClass.lcmm <- function(object) {
   dat <- getData.lcmm(object)
   
   if (!is.data.frame(pred <- object$pred)) stop('lcmm package updated?')
-  if (.row_names_info(pred, type = 2L) != .row_names_info(dat, type = 2L)) stop('should not happen')
+  if (nrow(pred) != nrow(dat)) stop('should not happen')
   if (names(pred)[1L] != subj) stop('lcmm package updated?')
   subj. <- pred[[subj]] # numeric
   if (is.unsorted(subj., strictly = FALSE)) stop('should not happen')
