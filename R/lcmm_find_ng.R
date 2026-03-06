@@ -17,7 +17,6 @@
 #'  idiag=TRUE, data=data_lcmm, link='beta',
 #'  verbose=FALSE, returndata=TRUE)
 #' @keywords internal
-#' @importFrom stats AIC BIC
 #' @export
 lcmm_find_ng <- function(fixed, criterion = BIC, ...) {
 

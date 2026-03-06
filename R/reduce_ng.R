@@ -22,8 +22,6 @@
 #' @examples
 #' reduce_ng_lcmm(m20)
 #' 
-#' @importFrom lcmm lcmm 
-#' @importFrom stats AIC BIC
 #' @export
 reduce_ng_lcmm <- function(object, criterion = BIC, ...) {
   if (object$ng == 1L) return(object)

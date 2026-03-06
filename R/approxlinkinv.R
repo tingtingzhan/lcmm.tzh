@@ -23,7 +23,6 @@
 #' see `plot(object, which = 'link')`.
 #' 
 #' @keywords internal
-#' @importFrom stats approxfun
 #' @export
 approxlinkinv_lcmm <- function(object, ...) {
   lk <- object$estimlink # 'matrix'
