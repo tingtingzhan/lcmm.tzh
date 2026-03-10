@@ -232,14 +232,14 @@ autolayer.lcmm <- function(
 
 
 
-#' @importFrom fastmd md_ md_autoplot_
+#' @importFrom fastmd md_ md_int
 #' @importFrom ecip md_regression_
 #' @export
 md_.lcmm <- function(x, xnm, ...) {
   
   z1 <- md_regression_(x)
   
-  z2 <- md_autoplot_(x = x, xnm = xnm, ...)
+  z2 <- md_int(x = x, xnm = xnm, engine = 'autoplot', ...)
   
   c(z1, z2) # ?fastmd::c.md_lines
   
