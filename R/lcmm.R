@@ -77,12 +77,12 @@ nobsText.lcmm <- function(x) {
           x$call$subject)
 }
 
-#' @importClassesFrom fastmd md_lines
+#' @importClassesFrom fastmd md
 #' @importFrom ecip desc_
 #' @export
 desc_.lcmm <- function(x) {
   'latent class mixed-effect [@Proust06]' |>
-    new(Class = 'md_lines', bibentry = .proust06())
+    new(Class = 'md', bibentry = .proust06())
 }
 
 
@@ -241,7 +241,7 @@ md_.lcmm <- function(x, xnm, ...) {
   
   z2 <- md_int(x = x, xnm = xnm, engine = 'autoplot', ...)
   
-  c(z1, z2) # ?fastmd::c.md_lines
+  c(z1, z2) # ?fastmd::c.md
   
 }
 

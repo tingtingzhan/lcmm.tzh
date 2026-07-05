@@ -14,7 +14,7 @@ LazyData: true
 LazyDataCompression: xz
 Depends: R (>= 4.6), lcmm (== 2.2.2)
 Imports: methods, ggplot2 (== 4.0.3), geomtextpath (== 0.2.0), 
-    nlme (== 3.1.169), ggrepel (== 0.9.8), rlang (== 1.2.0), 
+    nlme (== 3.1.169), ggrepel (== 0.9.8), rlang (== 1.3.0), 
     fastmd, ecip
 Config/roxygen2/version: 8.0.0
 Config/roxygen2/markdown: TRUE
